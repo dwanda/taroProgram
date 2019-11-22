@@ -18,6 +18,7 @@ class App extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
+
   config: Config = {
     pages: [
       'pages/index/index'
@@ -26,7 +27,35 @@ class App extends Component {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh:true
+    },
+    tabBar: {
+      color: "#666",
+      selectedColor: "#b4282d",
+      backgroundColor: "#fafafa",
+      borderStyle: 'black',
+      list: [{
+        pagePath: "pages/index/index",
+        iconPath: "./assets/tab-bar/home.png",
+        selectedIconPath: "./assets/tab-bar/home-active.png",
+        text: "首页"
+      }, {
+        pagePath: "pages/index/index",
+        iconPath: "./assets/tab-bar/cate.png",
+        selectedIconPath: "./assets/tab-bar/cate-active.png",
+        text: "分类"
+      }, {
+        pagePath: "pages/index/index",
+        iconPath: "./assets/tab-bar/cart.png",
+        selectedIconPath: "./assets/tab-bar/cart-active.png",
+        text: "购物车"
+      }, {
+        pagePath: "pages/index/index",
+        iconPath: "./assets/tab-bar/user.png",
+        selectedIconPath: "./assets/tab-bar/user-active.png",
+        text: "个人"
+      }]
     }
   }
 
