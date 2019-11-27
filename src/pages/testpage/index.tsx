@@ -1,6 +1,10 @@
 import Taro, { PureComponent } from '@tarojs/taro';
-import { View, Button, Text } from '@tarojs/components';
+import { View, Button, Text, ScrollView } from '@tarojs/components';
 import Test from './component'
+import { CounterContext } from './context/theme.js'
+
+import './index.scss'
+
 class Index extends PureComponent {
     config = {
         navigationBarTitleText: '啥哟'
@@ -13,28 +17,27 @@ class Index extends PureComponent {
     }
 
     render() {
-        let isLoggedIn:boolean = true 
+        const numbers:Array<number> = [...Array(100).keys()]
 
-        let status:JSX.Element
-        if (isLoggedIn) {
-          status = <Text>已登录</Text>
-        } else {
-          status = <Text>未登录</Text>
-        }
-    
         return (
-            <View>
-                可以了
-                <Test testProps={'haha'}/>
-                <Button onClick={this.testFunction.bind('haha')}>?</Button>
-                {isLoggedIn
-                    ? <Text>已登录</Text>
-                    : <Text>未登录</Text>
-                }
-                {
-                    status
-                }
-            </View>
+            <CounterContext.Provider value={'hahaho'}>
+                <View>
+                    可以了
+                    <Test testProps={'haha'}/>
+                    <Button onClick={this.testFunction.bind('haha')}>?</Button>
+                    <ScrollView scrollY className='my_fans_container'>
+                        {
+                            numbers.map((number)=>{
+                                return <Text
+                                    key={String(number)}
+                                    >
+                                    我是第 {number + 1} 个数字
+                                </Text>
+                            })
+                        }
+                    </ScrollView>
+                </View>
+            </CounterContext.Provider>
         );
     }
 }

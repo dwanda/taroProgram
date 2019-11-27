@@ -1,6 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
 
+import './theme/custom-variables.scss' // 全局引入一次即可
 import './app.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -21,26 +22,31 @@ class App extends Component {
 
   config: Config = {
     pages: [
+      'pages/projectList/index',
+      'pages/projectDetail/index',
+
       'pages/index/index',
       'pages/testpage/index'
     ],
     window: {
-      backgroundTextStyle: 'light',
+      backgroundTextStyle: 'dark',
+      backgroundColor:'#5a5a5a',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '云云流程',
       navigationBarTextStyle: 'black',
-      enablePullDownRefresh:true
+      enablePullDownRefresh:false
     },
     tabBar: {
       color: "#666",
       selectedColor: "#385bbd",
       backgroundColor: "#ffffff",
       borderStyle: 'black',
+      //数组第一项为首页
       list: [{
-        pagePath: "pages/index/index",
+        pagePath: "pages/projectList/index",
         iconPath: "./assets/menu/flow.png",
         selectedIconPath: "./assets/menu/flow-active.png",
-        text: "流程"
+        text: "项目"
       }, {
         pagePath: "pages/testpage/index",
         iconPath: "./assets/menu/mission.png",
